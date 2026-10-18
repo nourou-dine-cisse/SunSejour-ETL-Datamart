@@ -1,0 +1,14 @@
+services:
+  etl:
+    build: .
+    environment:
+      DB_SERVER: ${DB_SERVER:-host.docker.internal}
+      DB_USER: ${DB_USER:-sa}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME:-Datamart}
+      DB_PORT: ${DB_PORT:-1433}
+    volumes:
+      - ./transfert_data:/app/transfert_data
+      - ./excursion_data:/app/excursion_data
+      - ./logs:/app/logs
+      - ./etl_ready:/app/etl_ready
